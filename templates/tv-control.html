@@ -1,0 +1,61 @@
+<!-- Kyle Chesney, 2019 -->
+
+<!doctype html>
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='tv-style.css') }}" />
+<script type="text/javascript" src="{{ url_for('static', filename='audio.js') }}" ></script>
+
+<body>
+
+    {% include 'navbar.html' %}
+
+    <h1>TV controller</h1>
+
+    <!-- TODO: flexbox -->
+    <div class="grid-container">
+        <div class="grid-item-1">
+            <button name ="button" type="POST" value="keypress/Back" onclick="sendRokuP(this)">Back</button>
+        </div>
+        <div class="grid-item-2">
+            <button name ="button" type="POST" value="keypress/Home" onclick="sendRokuP(this)">Home</button>
+        </div>
+
+        <div class="grid-item-3">
+            <button name ="button" type="POST" value="keypress/Up" onclick="sendRokuP(this)">Up</button>
+        </div>
+
+        <div class="grid-item-4">
+            <button name ="button" type="POST" value="keypress/Left" onclick="sendRokuP(this)">Left</button>
+        </div>
+
+        <div class="grid-item-5">
+            <button name ="button" type="POST" value="keypress/Select" onclick="sendRokuP(this)">Select</button>
+        </div>
+
+        <div class="grid-item-6">
+            <button name ="button" type="POST" value="keypress/Right" onclick="sendRokuP(this)">Right</button>
+        </div>
+
+        <div class="grid-item-7">
+            <button name ="button" type="POST" value="keypress/Down" onclick="sendRokuP(this)">Down</button>
+        </div>
+
+        <div class="grid-item-8">
+            <button name ="button" type="POST" value="keypress/InputHDMI1" onclick="sendRokuP(this)">Computer</button>
+        </div>
+
+        <div class="grid-item-9">
+            <button name ="query" type="GET" value="launch/12" onclick="sendRokuP(this)">Netflix</button>
+        </div>
+
+        <div class="grid-item-10">
+            <button name ="query" type="GET" value="query/active-app" onclick="sendRokuP(this)">:thinking:</button>
+        </div>
+
+    </div>
+
+    <h3>AV Control</h3>
+    <input id="vol_slider" name="vol" type="range" min="-5" max="5" value="0" oninput="slideCommand(this)" onchange="returnSlider()" />
+
+</body>

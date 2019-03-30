@@ -1,0 +1,31 @@
+<!-- Kyle Chesney, 2019 -->
+
+<!doctype html>
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" />
+<script type="text/javascript" src="{{ url_for('static', filename='audio.js') }}" ></script>
+<script>
+ var volume = '{{ volume }}';
+</script>
+
+<body>
+
+    {% include 'navbar.html' %}
+
+    <h1>Homepage</h1>
+    <p>Hello, World!</p>
+
+
+    <h2>AJAX</h2>
+    <!-- TODO: turn this into a slider -->
+    <button name ="vol" type="submit" value="MVLDOWN" onclick="sendCommand(this)">Volume down</button>
+    <button name ="vol" type="submit" value="MVLUP" onclick="sendCommand(this)">Volume up</button>
+
+    <h2>AJAX Slider</h2>
+    <input id="vol_slider" name="vol" type="range" min="-5" max="5" value="0" oninput="slideCommand(this)" onchange="returnSlider()" />
+
+    <h2>Lights</h2>
+    <button name ="light" type="submit" value="0" onclick="sendMQTT(this)">Light off</button>
+    <button name ="light" type="submit" value="1" onclick="sendMQTT(this)">Light on</button>
+
+</body>
