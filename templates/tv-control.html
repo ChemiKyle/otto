@@ -15,9 +15,9 @@
     <!-- TODO: flexbox -->
     <div class="grid-container">
         <div class="grid-item-1">
-            <button name ="button" type="POST" value="keypress/Back" onclick="sendRokuP(this)">Back</button>
+            <button name ="button" type="POST" value="keypress/Back" onclick="sendRokuP(this)">&laquo;</button>
         </div>
-        <div class="grid-item-2">
+        <div class="grid-item-2" value="keypress/Home" onclick="sendRokuP(this)">
             <button name ="button" type="POST" value="keypress/Home" onclick="sendRokuP(this)">Home</button>
         </div>
 
@@ -54,6 +54,9 @@
         </div>
 
     </div>
+
+    <input id="text-input" name="text-input" type="text" value=""/>
+    <input name="" type="submit" value="Send" onclick="sendRokuP(getElementById('text-input'))" />
 
     <h3>AV Control</h3>
     <input id="vol_slider" name="vol" type="range" min="-5" max="5" value="0" oninput="slideCommand(this)" onchange="returnSlider()" />

@@ -5,7 +5,7 @@
     justify-items: center;
 }
 
-.grid-container .grid-item-1 { grid-column-start: 1; }
+.grid-item-1 { grid-column-start: 1; }
 
 .grid-item-2 { grid-column-start: 3; }
 
@@ -22,3 +22,8 @@
 .grid-item-9 { grid-column-start: 3}
 
 .grid-item-10 { grid-column-start: 2}
+
+button {
+    padding: 1em;
+    border-radius: 0.5em;
+}
