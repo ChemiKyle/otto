@@ -40,7 +40,9 @@ function sendMQTT(e) {
 
     var xhttp = new XMLHttpRequest();
 
-    xhttp.open("GET", `mqtt/${e.value}`, true); // pass value of button to python function
+    var obj = {path: e.name, cmd: e.value};
+
+    xhttp.open("GET", `mqtt/${JSON.stringify(obj)}`, true); // pass value of button to python function
     xhttp.send();
 }
 
@@ -56,7 +58,11 @@ function sendRoku(e) {
 
 
 function sendRokuP(e) {
+    if (e.id == "text-input") { e.value = "$~".concat(e.value); }
+
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", `roku/${e.value}`, true);
     xhttp.send();
+
+    if (e.id == "text-input") { e.value = e.value.substring(2); }
 }

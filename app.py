@@ -1,4 +1,5 @@
 from flask import *
+import json
 import eiscp
 import sys
 import sqlite3
@@ -53,6 +54,8 @@ def send_roku(command):
     adr = 'http://{}:8060/{}'.format(TV_ip, command) # TODO: change to f strings when raspbian updates python3
     if command.startswith('keypress') | command.startswith('launch'):
         requests.post(adr)
+    elif command.startswith('$~'):
+        [requests.post("http://{}:8060/keypress/Lit_{}".format(TV_ip, i)) for i in command[2:]]
     else:
         r = requests.get(adr)
         print(r.text)
@@ -60,9 +63,10 @@ def send_roku(command):
 
 
 # MQTT FOR MCS
-@app.route("/mqtt/<msg>", methods=['GET'])
+@app.route("/mqtt/<path:msg>", methods=['GET'])
 def send_mqtt(msg):
-    client.publish("lights/bookcase", str(msg))
+    msg = json.loads(msg)
+    client.publish(msg['path'], str(msg['cmd']))
     return(str(msg))
 
 
