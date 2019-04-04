@@ -1,8 +1,8 @@
-function sendCommand(e) {
+function sendOnkyoCommand(e) {
 
     var xhttp = new XMLHttpRequest();
 
-    xhttp.open("GET", `vol_change/${e.value}`, true); // pass value of button to python function
+    xhttp.open("GET", `onkyo/${e.value}`, true); // pass value of button to python function
     xhttp.send();
 }
 

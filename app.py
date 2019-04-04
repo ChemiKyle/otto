@@ -23,13 +23,23 @@ def tv_splash():
 
 receiver_ip = '192.168.2.2'
 
-# TODO: recreate Onkyo remote
+@app.route('/sound-control', methods=['GET'])
+def sound_splash():
+    return render_template('onkyo-audio.html')
 
-@app.route("/vol_change/<command>", methods=['GET'])
-def send_command(command):
-    # print(command)
-    volume = int(raw_send_command(command)[3:], 16)
-    print(volume)
+@app.route("/onkyo/<cmd>", methods=['GET'])
+def send_command(cmd):
+    if cmd == "PWR":
+        pwr = raw_send_command("PWRQSTN")
+        cmd += "0" + str(
+            abs(int(pwr[-1]) - 1) # 1 -> 0; 0 -> 1
+        )
+    response = raw_send_command(cmd)
+    if cmd.startswith("MVL"):
+        volume = int(response[3:], 16)
+        print(volume)
+    else:
+        print(response)
     return("")
 
 

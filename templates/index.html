@@ -18,8 +18,8 @@
 
     <h2>Volume control</h2>
     <!-- TODO: turn this into a slider -->
-    <button name ="vol" type="submit" value="MVLDOWN" onclick="sendCommand(this)">Volume down</button>
-    <button name ="vol" type="submit" value="MVLUP" onclick="sendCommand(this)">Volume up</button>
+    <button name ="vol" type="submit" value="MVLDOWN" onclick="sendOnkyoCommand(this)">Volume down</button>
+    <button name ="vol" type="submit" value="MVLUP" onclick="sendOnkyoCommand(this)">Volume up</button>
 
     <h2>- <- -> +</h2>
     <input id="vol_slider" name="vol" type="range" min="-5" max="5" value="0" oninput="slideCommand(this)" onchange="returnSlider()" />

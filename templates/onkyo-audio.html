@@ -1,0 +1,24 @@
+<!-- Kyle Chesney, 2019 -->
+
+<!doctype html>
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" />
+<script type="text/javascript" src="{{ url_for('static', filename='audio.js') }}" ></script>
+
+<body>
+
+    {% include 'navbar.html' %}
+
+    <h1>AV controller</h1>
+
+    <!-- TODO: flexbox -->
+    <div class="grid-container">
+        <div class="button-1">
+            <button name ="pwr-button" type="POST" value="PWR" onclick="sendOnkyoCommand(this)">PWR</button>
+        </div>
+    </div>
+
+    <h3>AV Control</h3>
+    <input id="vol_slider" name="vol" type="range" min="-5" max="5" value="0" oninput="slideCommand(this)" onchange="returnSlider()" />
+
+</body>
