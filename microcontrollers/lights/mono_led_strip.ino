@@ -2,8 +2,8 @@
 #include <PubSubClient.h>
 
 #define TRANSISTOR D1
+#define MQTT_TOPIC "lights/SUBLIGHT" //SUBLIGHT should be replaced with your light location
 
-// Connect to the WiFi
 const char* ssid = "";
 const char* password = "";
 const char* mqtt_server = "192.168.x.yy";
@@ -30,7 +30,7 @@ void reconnect() {
  if (client.connect("ESP8266 Client")) {
   Serial.println("connected");
   // ... and subscribe to topic
-  client.subscribe("lights/SUBLIGHT");
+  client.subscribe(MQTT_TOPIC);
  } else {
   Serial.print("failed, rc=");
   Serial.print(client.state());
