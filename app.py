@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def home_splash():
-#    volume = int(raw_send_command('MVLQSTN')[3:], 16) # causes hang if AV isn't fully on
+    #    volume = int(raw_send_command('MVLQSTN')[3:], 16) # causes hang if AV isn't fully on :(
 #    print(volume)
     return render_template('index.html')
 
@@ -19,11 +19,11 @@ def home_splash():
 def tv_splash():
     return render_template('tv-control.html')
 
-# TODO: INCLUDE templates for all controls
-
 # AUDIO
 
 receiver_ip = '192.168.2.2'
+
+# TODO: recreate Onkyo remote
 
 @app.route("/vol_change/<command>", methods=['GET'])
 def send_command(command):
@@ -47,6 +47,7 @@ def raw_send_command(command):
 
 
 # TELEVISION
+# excellent Roku documentation can be found at: https://sdkdocs.roku.com/display/sdkdoc/External+Control+API
 
 TV_ip = "192.168.2.6"
 
@@ -74,7 +75,7 @@ def send_mqtt(msg):
 def on_connect(client, userdata, flags, rc):
     print("Connected with code: {}".format(str(rc)))
     # sub_topics = ["lights/bookcase"]
-    # client.subscribe("lights/bookcase")
+    # [client.subscribe(topic) for topic in sub_topics]
 
 
 def on_message(client, userdata, msg):
