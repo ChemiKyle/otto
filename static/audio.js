@@ -40,7 +40,7 @@ function sendMQTT(e) {
 
     var xhttp = new XMLHttpRequest();
 
-    var obj = {path: e.name, cmd: e.value};
+    var obj = {topic: e.name, cmd: e.value};
 
     xhttp.open("GET", `mqtt/${JSON.stringify(obj)}`, true); // pass value of button to python function
     xhttp.send();

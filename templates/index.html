@@ -16,16 +16,31 @@
     <p>Hello, World!</p>
 
 
-    <h2>AJAX</h2>
+    <h2>Volume control</h2>
     <!-- TODO: turn this into a slider -->
     <button name ="vol" type="submit" value="MVLDOWN" onclick="sendCommand(this)">Volume down</button>
     <button name ="vol" type="submit" value="MVLUP" onclick="sendCommand(this)">Volume up</button>
 
-    <h2>AJAX Slider</h2>
+    <h2>- <- -> +</h2>
     <input id="vol_slider" name="vol" type="range" min="-5" max="5" value="0" oninput="slideCommand(this)" onchange="returnSlider()" />
 
     <h2>Lights</h2>
+
+    <h3>Living Room</h3>
+    <!-- TODO: CSS grid for this, vertically align on and off -->
     <button name ="lights/bookcase" type="submit" value="0" onclick="sendMQTT(this)">Light off</button>
     <button name ="lights/bookcase" type="submit" value="1" onclick="sendMQTT(this)">Light on</button>
+
+    <h3>Bedroom</h3>
+    <button name ="lights/bedside" type="submit" value="0" onclick="sendMQTT(this)">Light off</button>
+    <button name ="lights/bedside" type="submit" value="1" onclick="sendMQTT(this)">Light on</button>
+
+    <h2>Climate control</h2>
+
+    <h3>AC</h3>
+    <!-- TODO: hack AC once IR receiver arrives -->
+    <button name ="climate/ac_control" type="submit" value="0" onclick="sendMQTT(this)">AC off</button>
+    <button name ="climate/ac_control" type="submit" value="1" onclick="sendMQTT(this)">AC on</button>
+
 
 </body>

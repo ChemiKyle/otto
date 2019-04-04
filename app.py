@@ -14,6 +14,7 @@ def home_splash():
 #    print(volume)
     return render_template('index.html')
 
+
 @app.route('/tv-control', methods=['GET', 'POST'])
 def tv_splash():
     return render_template('tv-control.html')
@@ -66,13 +67,14 @@ def send_roku(command):
 @app.route("/mqtt/<path:msg>", methods=['GET'])
 def send_mqtt(msg):
     msg = json.loads(msg)
-    client.publish(msg['path'], str(msg['cmd']))
+    client.publish(msg['topic'], str(msg['cmd']))
     return(str(msg))
 
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with code: {}".format(str(rc)))
-    client.subscribe("lights/bookcase")
+    # sub_topics = ["lights/bookcase"]
+    # client.subscribe("lights/bookcase")
 
 
 def on_message(client, userdata, msg):
