@@ -42,4 +42,7 @@ body {
 	color: var(--text-color);
 }
 
-
+button {
+    padding: 1em;
+    border-radius: 0.5em;
+}

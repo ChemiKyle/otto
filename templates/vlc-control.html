@@ -13,10 +13,22 @@
 
     <!-- TODO: flexbox -->
     <div class="grid-container">
-            <button name ="button" value="pl_pause" onclick="sendVLCCommandP(this)">Play/Pause</button>
+        <button name ="button" value="seek&val=-10" onclick="sendVLCCommandP(this)">&laquo;</button>
+        <button name ="button" value="pl_pause" onclick="sendVLCCommandP(this)">Play/Pause</button>
+        <button name ="button" value="seek&val=+10" onclick="sendVLCCommandP(this)">&raquo;</button>
+
+        <br/>
+
+        <button name ="button" value="pl_previous" onclick="sendVLCCommandP(this)">Prev</button>
+        <button name ="button" value="pl_next" onclick="sendVLCCommandP(this)">Next</button>
     </div>
 
     <h3>AV Control</h3>
-    <input id="vol_slider" name="vol" type="range" min="-5" max="5" value="0" oninput="slideCommand(this)" onchange="returnSlider()" />
+    <!-- TODO: move this to the navbar? -->
+    <div style="text-align:center;">
+        <h2>- +</h2>
+        <button name ="vol" type="submit" value="AMTTG" onclick="sendOnkyoCommand(this)">Mute</button>
+        <input id="vol_slider" name="vol" type="range" min="-5" max="5" value="0" oninput="slideCommand(this)" onchange="returnSlider()" />
+    </div>
 
 </body>

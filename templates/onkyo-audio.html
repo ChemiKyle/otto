@@ -19,6 +19,10 @@
     </div>
 
     <h3>AV Control</h3>
-    <input id="vol_slider" name="vol" type="range" min="-5" max="5" value="0" oninput="slideCommand(this)" onchange="returnSlider()" />
+    <div style="text-align:center;">
+        <h2>- +</h2>
+        <button name ="vol" type="submit" value="AMTTG" onclick="sendOnkyoCommand(this)">Mute</button>
+        <input id="vol_slider" name="vol" type="range" min="-5" max="5" value="0" oninput="slideCommand(this)" onchange="returnSlider()" />
+    </div>
 
 </body>

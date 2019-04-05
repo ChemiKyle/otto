@@ -13,9 +13,6 @@
     {% include 'navbar.html' %}
 
     <h1>Homepage</h1>
-
-    <p>Dylan sucks 2D dick</p>
-
     <h2>Volume control</h2>
     <button name ="vol" type="submit" value="MVLDOWN" onclick="sendOnkyoCommand(this)">Volume down</button>
     <button name ="vol" type="submit" value="MVLUP" onclick="sendOnkyoCommand(this)">Volume up</button>
@@ -23,12 +20,13 @@
     <div style="text-align:center;">
     <h2>- +</h2>
     <input id="vol_slider" name="vol" type="range" min="-5" max="5" value="0" oninput="slideCommand(this)" onchange="returnSlider()" />
+    <button name ="vol" type="submit" value="AMTTG" onclick="sendOnkyoCommand(this)">Mute</button>
     </div>
 
     <h2>Lights</h2>
 
     <h3>Living Room</h3>
-    <!-- TODO: CSS grid for this, vertically align on and off -->
+    <!-- TODO: CSS grid for this, vertically align on and off or set to toggle-->
     <button name ="lights/bookcase" type="submit" value="0" onclick="sendMQTT(this)">Light off</button>
     <button name ="lights/bookcase" type="submit" value="1" onclick="sendMQTT(this)">Light on</button>
 
