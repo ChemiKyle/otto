@@ -8,10 +8,10 @@ function sendOnkyoCommand(e) {
 
 
 function slideCommand(e) {
-    console.log("old");
+    // console.log("old");
 
-    console.log(volume);
-    console.log("new");
+    // console.log(volume);
+    // console.log("new");
 
     var xhttp = new XMLHttpRequest();
 
@@ -23,8 +23,9 @@ function slideCommand(e) {
 
     console.log(direction);
 
+    // TODO: make this generic, accept path, reuse in others
     function send(){
-        xhttp.open("GET", `vol_change/MVL${direction}`, true); // pass value of button to python function
+        xhttp.open("GET", `/onkyo/MVL${direction}`, true); // pass value of button to python function
         xhttp.send();
     }
     send(direction);
@@ -36,17 +37,10 @@ function returnSlider() {
 }
 
 
-function sendMQTT(e) {
 
-    var xhttp = new XMLHttpRequest();
-
-    var obj = {topic: e.name, cmd: e.value};
-
-    xhttp.open("GET", `mqtt/${JSON.stringify(obj)}`, true); // pass value of button to python function
-    xhttp.send();
-}
-
+// Roku
 function sendRoku(e) {
+    // Cross origin request blocked :(
     console.log("sending TV");
     console.log(e.name);
     var tv_ip = '192.168.2.6';
@@ -65,4 +59,35 @@ function sendRokuP(e) {
     xhttp.send();
 
     if (e.id == "text-input") { e.value = e.value.substring(2); }
+}
+
+// VLC
+function sendVLCCommand(e) {
+    // Cross origin request blocked :(
+
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.open("GET", `http://192.168.2.5:8080/requests/status.xml?command=${e.value}`, true, null, "password");
+    xhttp.send();
+    console.log("sent");
+    console.log(xhttp.responseText);
+}
+
+function sendVLCCommandP(e) {
+    // Cross origin request blocked :(
+
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.open("GET", `vlc/${e.value}`, true);
+    xhttp.send();
+}
+
+function sendMQTT(e) {
+
+    var xhttp = new XMLHttpRequest();
+
+    var obj = {topic: e.name, cmd: e.value};
+
+    xhttp.open("GET", `mqtt/${JSON.stringify(obj)}`, true); // pass value of button to python function
+    xhttp.send();
 }

@@ -13,16 +13,17 @@
     {% include 'navbar.html' %}
 
     <h1>Homepage</h1>
-    <p>Hello, World!</p>
 
+    <p>Dylan sucks 2D dick</p>
 
     <h2>Volume control</h2>
-    <!-- TODO: turn this into a slider -->
     <button name ="vol" type="submit" value="MVLDOWN" onclick="sendOnkyoCommand(this)">Volume down</button>
     <button name ="vol" type="submit" value="MVLUP" onclick="sendOnkyoCommand(this)">Volume up</button>
 
-    <h2>- <- -> +</h2>
+    <div style="text-align:center;">
+    <h2>- +</h2>
     <input id="vol_slider" name="vol" type="range" min="-5" max="5" value="0" oninput="slideCommand(this)" onchange="returnSlider()" />
+    </div>
 
     <h2>Lights</h2>
 

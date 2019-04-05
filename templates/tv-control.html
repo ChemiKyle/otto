@@ -58,6 +58,8 @@
     <input id="text-input" name="text-input" type="text" value=""/>
     <input name="" type="submit" value="Send" onclick="sendRokuP(getElementById('text-input'))" />
 
+            <button name ="button" type="POST" value="keypress/PowerOff" onclick="sendRokuP(this)">Power</button>
+
     <h3>AV Control</h3>
     <input id="vol_slider" name="vol" type="range" min="-5" max="5" value="0" oninput="slideCommand(this)" onchange="returnSlider()" />
 

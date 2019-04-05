@@ -74,6 +74,20 @@ def send_roku(command):
     return("")
 
 
+# VLC
+computer_ip = "192.168.2.5"
+
+@app.route("/vlc-control", methods=["GET"])
+def vlc_control():
+    return render_template('vlc-control.html')
+
+
+@app.route("/vlc/<cmd>", methods=['GET'])
+def send_vlc(cmd):
+    r = requests.get('http://{}:8080/requests/status.xml?command={}'.format(computer_ip, cmd), auth=('', 'password'))
+    print(r.text)
+    return("")
+
 # MQTT FOR MCS
 @app.route("/mqtt/<path:msg>", methods=['GET'])
 def send_mqtt(msg):

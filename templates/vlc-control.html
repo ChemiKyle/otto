@@ -1,0 +1,22 @@
+<!-- Kyle Chesney, 2019 -->
+
+<!doctype html>
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" />
+<script type="text/javascript" src="{{ url_for('static', filename='audio.js') }}" ></script>
+
+<body>
+
+    {% include 'navbar.html' %}
+
+    <h1>VLC controller</h1>
+
+    <!-- TODO: flexbox -->
+    <div class="grid-container">
+            <button name ="button" value="pl_pause" onclick="sendVLCCommandP(this)">Play/Pause</button>
+    </div>
+
+    <h3>AV Control</h3>
+    <input id="vol_slider" name="vol" type="range" min="-5" max="5" value="0" oninput="slideCommand(this)" onchange="returnSlider()" />
+
+</body>
