@@ -21,7 +21,7 @@ def tv_splash():
 
 # AUDIO
 
-receiver_ip = '192.168.2.2'
+receiver_ip = '192.168.2.3'
 
 @app.route('/sound-control', methods=['GET'])
 def sound_splash():
@@ -59,7 +59,7 @@ def raw_send_command(command):
 # TELEVISION
 # excellent Roku documentation can be found at: https://sdkdocs.roku.com/display/sdkdoc/External+Control+API
 
-TV_ip = "192.168.2.6"
+TV_ip = "192.168.2.5"
 
 @app.route("/roku/<path:command>", methods=['GET'])
 def send_roku(command):
@@ -75,7 +75,7 @@ def send_roku(command):
 
 
 # VLC
-computer_ip = "192.168.2.5"
+computer_ip = "192.168.2.2"
 
 @app.route("/vlc-control", methods=["GET"])
 def vlc_control():

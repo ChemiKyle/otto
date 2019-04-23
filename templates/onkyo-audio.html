@@ -11,14 +11,19 @@
 
     <h1>AV controller</h1>
 
+    <button name ="vol" type="submit" value="MVLDOWN" onclick="sendOnkyoCommand(this)">Volume down</button>
+    <button name ="vol" type="submit" value="MVLUP" onclick="sendOnkyoCommand(this)">Volume up</button>
+
     <!-- TODO: flexbox -->
     <div class="grid-container">
         <div class="button-1">
             <button name ="pwr-button" type="POST" value="PWR" onclick="sendOnkyoCommand(this)">PWR</button>
         </div>
+        <div class="button-2">
+            <button name ="pc-button" type="POST" value="SLI05" onclick="sendOnkyoCommand(this)">PC</button>
+        </div>
     </div>
 
-    <h3>AV Control</h3>
     <div style="text-align:center;">
         <h2>- +</h2>
         <button name ="vol" type="submit" value="AMTTG" onclick="sendOnkyoCommand(this)">Mute</button>
