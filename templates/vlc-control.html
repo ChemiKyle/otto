@@ -13,10 +13,12 @@
 
     <!-- TODO: flexbox -->
     <div class="grid-container">
-        <button name ="button" value="seek&val=-10" onclick="sendVLCCommandP(this)">&laquo;</button>
+        <button name ="button" value="seek&val=-" onclick="sendVLCCommandP(this)">&laquo;</button>
         <button name ="button" value="pl_pause" onclick="sendVLCCommandP(this)">Play/Pause</button>
-        <button name ="button" value="seek&val=+10" onclick="sendVLCCommandP(this)">&raquo;</button>
+        <button name ="button" value="seek&val=+" onclick="sendVLCCommandP(this)">&raquo;</button>
 
+        <br/>
+        <input name="seek-value" type="number" value="10" placeholder="Seek value (s)" />
         <br/>
 
         <button name ="button" value="pl_previous" onclick="sendVLCCommandP(this)">Prev</button>
