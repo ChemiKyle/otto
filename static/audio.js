@@ -1,41 +1,27 @@
-function sendOnkyoCommand(e) {
-
+function ajaxRequest(path, type="GET") {
     var xhttp = new XMLHttpRequest();
 
-    xhttp.open("GET", `onkyo/${e.value}`, true); // pass value of button to python function
+    xhttp.open(type, path, true); // pass value of button to python function
     xhttp.send();
+}
+
+function sendOnkyoCommand(e) {
+    ajaxRequest(`onkyo/${e.value}`);
 }
 
 
 function slideCommand(e) {
-    // console.log("old");
-
-    // console.log(volume);
-    // console.log("new");
-
-    var xhttp = new XMLHttpRequest();
-
-    var val = e.value;
-
     var direction;
-    val > 0 ? direction = "UP" : direction = "DOWN";
-    // volume = val;
+    e.value > 0 ? direction = "UP" : direction = "DOWN";
 
     console.log(direction);
-
-    // TODO: make this generic, accept path, reuse in others
-    function send(){
-        xhttp.open("GET", `/onkyo/MVL${direction}`, true); // pass value of button to python function
-        xhttp.send();
-    }
-    send(direction);
+    ajaxRequest(`/onkyo/MVL${direction}`);
     // slideCommand(e); // Yikes
 }
 
 function returnSlider() {
     document.getElementById('vol_slider').value = 0;
 }
-
 
 
 // Roku
@@ -54,9 +40,7 @@ function sendRoku(e) {
 function sendRokuP(e) {
     if (e.id == "text-input") { e.value = "$~".concat(e.value); }
 
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", `roku/${e.value}`, true);
-    xhttp.send();
+    ajaxRequest(`roku/${e.value}`);
 
     if (e.id == "text-input") { e.value = e.value.substring(2); }
 }
@@ -74,20 +58,16 @@ function sendVLCCommand(e) {
 }
 
 function sendVLCCommandP(e) {
-    // Cross origin request blocked :(
+    if ( e.value.includes('seek&val=') ) { e.value += document.getElementsByName('seek-value')[0].value; }
+    ajaxRequest(`vlc/${e.value}`);
 
-    var xhttp = new XMLHttpRequest();
+    if ( e.value.includes('seek&val=') ) { e.value = e.value.substring(0, e.value.length - 2); }
 
-    xhttp.open("GET", `vlc/${e.value}`, true);
-    xhttp.send();
 }
 
+// MQTT
 function sendMQTT(e) {
-
-    var xhttp = new XMLHttpRequest();
-
     var obj = {topic: e.name, cmd: e.value};
 
-    xhttp.open("GET", `mqtt/${JSON.stringify(obj)}`, true); // pass value of button to python function
-    xhttp.send();
+    ajaxRequest(`mqtt/${JSON.stringify(obj)}`);
 }
