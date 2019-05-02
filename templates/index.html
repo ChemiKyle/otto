@@ -35,11 +35,13 @@
     <button name ="lights/bedside" type="submit" value="1" onclick="sendMQTT(this)">Light on</button>
 
     <h2>Climate control</h2>
-
-    <h3>AC</h3>
-    <!-- TODO: hack AC once IR receiver arrives -->
-    <button name ="climate/ac_control" type="submit" value="0" onclick="sendMQTT(this)">AC off</button>
-    <button name ="climate/ac_control" type="submit" value="1" onclick="sendMQTT(this)">AC on</button>
+    <button name ="ac" type="submit" value="0" onclick="sendMQTT(this)">Power</button>
+    <button name ="ac" type="submit" value="c" onclick="sendMQTT(this)">Cooling</button>
+    <button name ="ac" type="submit" value="f" onclick="sendMQTT(this)">Fan only</button>
+    <button name ="ac" type="submit" value="h" onclick="sendMQTT(this)">Fan high</button>
+    <button name ="ac" type="submit" value="l" onclick="sendMQTT(this)">Fan low</button>
+    <button name ="ac" type="submit" value="u" onclick="sendMQTT(this)">Raise temperature</button>
+    <button name ="ac" type="submit" value="d" onclick="sendMQTT(this)">Lower temperature</button>
 
 
 </body>
